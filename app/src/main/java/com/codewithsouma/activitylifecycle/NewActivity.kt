@@ -15,7 +15,7 @@ class NewActivity : AppCompatActivity() {
     lateinit var txtForgotPassword: TextView
     lateinit var txtRegister: TextView
     private val validMobileNumber = "8768454982"
-    private val validPassword = "Admin"
+    private val validPassword = arrayOf("tony","steve","bruce","thanos","Admin")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,12 +32,43 @@ class NewActivity : AppCompatActivity() {
         btnLogin.setOnClickListener {
             val mobileNumber = etMobileNumber.text.toString().trim()
             val password = etPassword.text.toString().trim()
-
-            if ((validMobileNumber == mobileNumber) && (validPassword == password)) {
-                val intent = Intent(this@NewActivity, MainActivity::class.java)
-                startActivity(intent)
-            } else Toast.makeText(this@NewActivity, "Invalid Credentials", Toast.LENGTH_LONG).show()
-
+            validateAndLogin(mobileNumber, password)
         }
+    }
+
+    private fun validateAndLogin(mobileNumber: String, password: String) {
+        var nameOfAvenger = "Avenger"
+        if ((validMobileNumber == mobileNumber)) {
+            val intent = Intent(this@NewActivity, MainActivity::class.java)
+
+            when (password) {
+                validPassword[0] -> {
+                    nameOfAvenger = "Iron Man"
+                    intent.putExtra("nameOfAvenger", nameOfAvenger)
+                    startActivity(intent)
+                }
+                validPassword[1] -> {
+                    nameOfAvenger = "Captain America"
+                    intent.putExtra("nameOfAvenger", nameOfAvenger)
+                    startActivity(intent)
+                }
+                validPassword[2] -> {
+                    nameOfAvenger = "The Hulk"
+                    intent.putExtra("nameOfAvenger", nameOfAvenger)
+                    startActivity(intent)
+                }
+                validPassword[3] -> {
+                    nameOfAvenger = "The Avengers"
+                    intent.putExtra("nameOfAvenger", nameOfAvenger)
+                    startActivity(intent)
+                }
+                validPassword[4] -> {
+                    nameOfAvenger = "Admin"
+                    intent.putExtra("nameOfAvenger", nameOfAvenger)
+                    startActivity(intent)
+                }
+                else -> Toast.makeText(this@NewActivity, "Incorrect Credentials", Toast.LENGTH_LONG).show()
+            }
+        } else Toast.makeText(this@NewActivity, "Incorrect Credentials", Toast.LENGTH_LONG).show()
     }
 }
