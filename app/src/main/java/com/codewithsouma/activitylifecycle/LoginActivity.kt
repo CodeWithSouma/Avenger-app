@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
-class NewActivity : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
     lateinit var etMobileNumber: EditText
     lateinit var etPassword: EditText
     lateinit var btnLogin: Button
@@ -19,7 +19,7 @@ class NewActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_new)
+        setContentView(R.layout.activity_login)
 
         title = "Log In"
 
@@ -39,7 +39,7 @@ class NewActivity : AppCompatActivity() {
     private fun validateAndLogin(mobileNumber: String, password: String) {
         var nameOfAvenger = "Avenger"
         if ((validMobileNumber == mobileNumber)) {
-            val intent = Intent(this@NewActivity, MainActivity::class.java)
+            val intent = Intent(this@LoginActivity, AvengersActivity::class.java)
 
             when (password) {
                 validPassword[0] -> {
@@ -67,8 +67,14 @@ class NewActivity : AppCompatActivity() {
                     intent.putExtra("nameOfAvenger", nameOfAvenger)
                     startActivity(intent)
                 }
-                else -> Toast.makeText(this@NewActivity, "Incorrect Credentials", Toast.LENGTH_LONG).show()
+                else -> Toast.makeText(this@LoginActivity, "Incorrect Credentials", Toast.LENGTH_LONG).show()
             }
-        } else Toast.makeText(this@NewActivity, "Incorrect Credentials", Toast.LENGTH_LONG).show()
+        } else Toast.makeText(this@LoginActivity, "Incorrect Credentials", Toast.LENGTH_LONG).show()
+    }
+
+
+    override fun onPause() {
+        super.onPause()
+        finish()
     }
 }
