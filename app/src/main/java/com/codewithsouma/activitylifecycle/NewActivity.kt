@@ -8,7 +8,7 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 
-class NewActivity : AppCompatActivity(),View.OnClickListener {
+class NewActivity : AppCompatActivity(){
     lateinit var etMobileNumber : EditText
     lateinit var etPassword : EditText
     lateinit var btnLogin : Button
@@ -27,11 +27,8 @@ class NewActivity : AppCompatActivity(),View.OnClickListener {
         txtForgotPassword = findViewById(R.id.txtForgotPassword)
         txtRegister = findViewById(R.id.txtRegisterYourself)
 
-        btnLogin.setOnClickListener(this)
-    }
-
-    override fun onClick(p0: View?) {
-        Toast.makeText(this@NewActivity,"We clicked on the button to see this Toast",Toast.LENGTH_LONG).show()
-
+        btnLogin.setOnClickListener {
+            Toast.makeText(this@NewActivity, "We clicked on the button to see this Toast", Toast.LENGTH_LONG).show()
+        }
     }
 }
