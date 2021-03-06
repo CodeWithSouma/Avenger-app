@@ -6,4 +6,7 @@
     <string name="log_in">Log In</string>
     <string name="forgot_password">Forgot Password?</string>
     <string name="register_yourself">Register Yourself</string>
+    <string name="preference_file_name">Avengers Preferences</string>
+    <string name="log_out">Log out</string>
+    <string name="exit">Exit</string>
 </resources>
